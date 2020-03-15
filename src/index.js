@@ -13,7 +13,9 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 import Routes from './node_modules/pages/routes';
-import TopBar from 'components/topBar'
+import TopBar from 'components/topBar';
+import {CurrentUserProvider} from 'context/currentUser';
+import CurrentUserChecker from 'components/currentUserChecker'
 /**
  * Функция рендерит элементы.
  * @function [<App>] 
@@ -22,12 +24,14 @@ import TopBar from 'components/topBar'
  */
 const App = () => {
     return (
-        <div>
-            <Router>
-                <TopBar/>
-                <Routes/>
-            </Router>
-        </div>
+        <CurrentUserProvider>
+            <CurrentUserChecker>
+                <Router>
+                    <TopBar/>
+                    <Routes/>
+                </Router>
+            </CurrentUserChecker>
+        </CurrentUserProvider>
     )
 }
 ReactDOM.render(<App />, document.getElementById('root'));
