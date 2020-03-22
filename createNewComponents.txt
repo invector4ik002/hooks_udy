@@ -1,0 +1,70 @@
+Создание нового компонента "Страничка размещения поста" 
+// 1. Создаем routes =====================================================
+Для нового компонента содержащего свою строницу и поля заполнения в ней,
+создается маршрут в файле routes.js
+
+<Route path='/articles/new' component={CreateArticle}></Route>
+
+// 2. Импортируем компонент в routes.js ===================================
+Использую НЕДЕФОЛТНЫЙ импорт, принемаю в {CreateArticle}
+
+import {CreateArticle} from 'pages/createArticle'
+
+// 3. Создаем компонент страницу добавления поста. =========================
+-------------------------------------------------------------------------------
+3.1 Создаем фаил "article.js" в components/article.js
+   3.1.1 эмплиментация Формы заполнения поста 
+     !*Рекомендуется использовать Хук {useState} 
+     у нас 4 input для приема данных от пользователя, значит нужно 4 состояния 4 {useState}
+     const [title, setTitle] = useState('')
+     const [body, setBody] = useState('')
+     const [description, setDescription] = useState('')
+     const [tagList, setTagList] = useState('')
+--------------------------------------------------------------------------------------    
+   import React from 'react';
+   
+   export const ArticleForm = ({onSubmit, errors, initialValues}) => {
+      const [title, setTitle] = useState('')
+      const [body, setBody] = useState('')
+      const [description, setDescription] = useState('')
+      const [tagList, setTagList] = useState('')
+      return (
+         <div>ArticlesForm</div>
+      )
+   }
+---------------------------------------------------------------------------------
+3.2 Создаем папку createArticle и фаил в ней index.js в папке pages
+в файле создаем процесс отображения импортируя туда уже компонентом {ArticleForm}
+
+import React from 'react';
+import {ArticleForm} from 'components/articlForm'
+/**
+ * Фунция рисующая страницу добавления поста 
+ * Передает три пропса
+ * 1.пропс const errors ={}
+ * 2.пропс initialValues={initialValues}
+ * 3.пропс onSubmit={handleSubmit}
+ */
+export const CreateArticle = () => {
+   const errors ={}
+   const initialValues ={}
+   const handleSubmit = (dada) => {
+      console.log('createArticl handleSubmit():', data)
+   }
+   return (
+      <div>
+         <ArticleForm
+            errors={errors}
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+         />
+      </div>
+   )
+}
+3.3 Передаем данные с бэка в компонент
+-----------------------------------------------------------------------------------
+
+
+
+
+
