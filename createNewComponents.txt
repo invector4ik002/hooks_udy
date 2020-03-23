@@ -22,7 +22,11 @@ import {CreateArticle} from 'pages/createArticle'
      const [tagList, setTagList] = useState('')
 --------------------------------------------------------------------------------------    
    import React from 'react';
-   
+   /**
+   *@param {onSubmit} props - в нем прилетает функция [<handleSubmit>] из createArticl/index.js
+   *
+   *
+   **/
    export const ArticleForm = ({onSubmit, errors, initialValues}) => {
       const [title, setTitle] = useState('')
       const [body, setBody] = useState('')
@@ -43,7 +47,7 @@ import {ArticleForm} from 'components/articlForm'
  * Передает три пропса
  * 1.пропс const errors ={}
  * 2.пропс initialValues={initialValues}
- * 3.пропс onSubmit={handleSubmit}
+ * 3.пропс onSubmit={handleSubmit} - функция через которую получим данные не посредственно с ArticleForm
  */
 export const CreateArticle = () => {
    const errors ={}
